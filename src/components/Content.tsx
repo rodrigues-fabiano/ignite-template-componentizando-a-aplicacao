@@ -2,15 +2,11 @@ import { useEffect, useState } from 'react';
 
 import { api } from '../services/api';
 
+import { GenreResponseProps } from "../@types/genre";
 import { MovieCard } from '../components/MovieCard';
+import { Header } from '../components/Header';
 
 import '../styles/content.scss';
-
-interface GenreResponseProps {
-  id: number;
-  name: 'action' | 'comedy' | 'documentary' | 'drama' | 'horror' | 'family';
-  title: string;
-}
 
 interface MovieProps {
   imdbID: string;
@@ -43,9 +39,7 @@ export function Content({ selectedGenreId }: ContentProps) {
 
   return (
     <div className="container">
-      <header>
-        <span className="category">Categoria:<span> {selectedGenre.title}</span></span>
-      </header>
+      <Header selectedGenre={selectedGenre}/>
 
       <main>
         <div className="movies-list">
